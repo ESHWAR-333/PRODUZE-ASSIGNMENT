@@ -91,7 +91,7 @@ function App() {
       <div className='mt-10'>
         {loading ? <h1 className='text-center'>loading....</h1> : (''
         )}
-        {error ? <h1>{error}</h1> : ''}
+        {error ? <h1 className='text-center'>{error}</h1> : ''}
         {weathers && (
           <div>
             <h1 className='text-2xl text-center font-bold '>Weather in {weathers[6]}</h1>
@@ -99,16 +99,16 @@ function App() {
               <div className='p-6 flex text-center'>
                 <div className='flex-col'>
                   <h1 className='font-normal'>Temperature</h1>
-                  <h1 className=''> {weathers[3]}°C</h1>
+                  <h1 className=''> {weathers[3]}°</h1>
                 </div>
                 <img src={temp} className='w-14' alt='img' />
 
               </div>
               <div>
                 <div className='p-6 pb-0  flex'>
-                  <h1 className='font-normal font-serif'>Max   {weathers[4]}°C</h1>
+                  <h1 className='font-normal font-serif'>Max   {weathers[4]}°</h1>
                 </div>
-                <div className='p-6 py-0 flex font-serif'><h1 className='font-normal'>Min   {weathers[5]}°C</h1>
+                <div className='p-6 py-0 flex font-serif'><h1 className='font-normal'>Min   {weathers[5]}°</h1>
                 </div>
               </div>
 
