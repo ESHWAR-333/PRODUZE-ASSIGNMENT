@@ -1,8 +1,10 @@
+//Import necessary dependencies, including React, the Axios library for making HTTP requests
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import temp from './temp.jpg'
 
+//Defined an array of predefined cities that users can choose from
 const cities = [
   'Tokyo',
   'Delhi',
@@ -16,7 +18,10 @@ const cities = [
   'Osaka',
   'Hyderabad'
 ]
+
 function App() {
+
+  //Initializing the state variables using the useState hook to manage the application's dynamic behavior.
   const [input, setInput] = useState('');
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -24,6 +29,7 @@ function App() {
   const [error, setError] = useState<string | null>(null);
   const [weathers, setWeathers] = useState<string[] | null>(null);
 
+  //Use the useEffect hook to fetch weather data
   useEffect(() => {
     const fetechData = async () => {
       if (selectedCity) {
@@ -52,12 +58,15 @@ function App() {
 
 
 
+  //Handle Selected City
   const handleSelectedCity = (city: string) => {
     setSelectedCity(city);
-    setInput('')
+    setInput(city);
     setResults([]);
   }
 
+
+  //Handle Input Change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
     setInput(e.target.value)
@@ -73,6 +82,8 @@ function App() {
 
   }
 
+
+  //Render UI
   return (
     <div className="bg-slate-400 h-screen   flex-column justify-center items-center">
       <div className='pt-8 text-center'>
