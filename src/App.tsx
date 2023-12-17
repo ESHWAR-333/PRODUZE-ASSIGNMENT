@@ -1,4 +1,4 @@
-//Import necessary dependencies, including React, the Axios library for making HTTP requests
+//Import necessary dependencies, including React and the Axios library for making HTTP requests
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
@@ -33,6 +33,7 @@ function App() {
   useEffect(() => {
     const fetechData = async () => {
       if (selectedCity) {
+        //Handle loading and errors during the API call.
         setLoading(true);
         setError('');
         try {
@@ -45,6 +46,7 @@ function App() {
           setWeathers([feels_like, humidity, pressure, temp, temp_max, temp_min, name, main, speed])
           console.log(weatherData);
         } catch (error) {
+          
           console.log(error);
           setError('Something Went Wrong while Fetchiing Data');
         } finally {
@@ -70,9 +72,13 @@ function App() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
     setInput(e.target.value)
+
+    //filters through a list of predefined cities to provide autocomplete suggestions.
     const filteredCities = cities.filter(city =>
       city.toLowerCase().includes(input.toLowerCase())
     );
+
+    //If the input is empty, clear the suggestion list and weather information.
     if (e.target.value === '') {
       setResults([]);
       setWeathers(null);
